@@ -11,10 +11,9 @@ let play = false
 let donQ = 94
 let sword = 84
 
-let giants = [0, 1, 2, 3]
+const giants = [0, 1, 2, 3]
 let giantDirection = 'right'
-let giantMoveId
-// let giantArray = giants.slice()
+// let giantMoveId
 
 
 //points
@@ -38,17 +37,13 @@ for (let index = 0; index < width ** 2; index++) {
 }
 
 
-//make DQ and sword appear
-cells[donQ].classList.remove('donQ')
-donQ += 1
+//make DQ appear
 cells[donQ].classList.add('donQ')
 //make sword appear
-cells[sword].classList.remove('sword')
-sword += 1
 cells[sword].classList.add('sword')
 
 
-//DQ and sword movement 
+//DQ and sword movement L&R
 document.addEventListener('keyup', (event) => {
   const key = event.key
   //move right
@@ -60,6 +55,7 @@ document.addEventListener('keyup', (event) => {
     cells[sword].classList.remove('sword')
     sword += 1
     cells[sword].classList.add('sword')
+    
     //move left
   } else if (key === 'ArrowLeft' && !(donQ % width === 0)) {
     cells[donQ].classList.remove('donQ')
@@ -78,7 +74,7 @@ function startGame() {
   play = true
   createGiant()
   throwSword()
-  setInterval(moveGiants(), 1000)
+  moveGiants()
 }
 
 startGame()
@@ -109,54 +105,63 @@ function throwSword() {
 function createGiant() {
   giants.forEach(giant => cells[giant].classList.add('giant'))
 }
-
 // move giants 
 function moveGiants() {
-  console.log(giants)
+  setInterval(() => {
+    console.log(giants)
+    giants.forEach((giant, i) => {
 
-  giants.forEach(giant => {
+      //moving left 
+      if (giantDirection === 'left') {
+        console.log('stage 1')
+        if (giants[0] === width % 0) {
+          giantDirection = 'right'
+          console.log('stage 2')
 
-    //moving left 
-    if (giantDirection === 'left') {
-      if (giants[0] === width % 0) {
-        giantDirection = 'right'
-      } else {
-        cells[giant].classList.remove('giant')
-        giant -= 1
-        cells[giant].classList.add('giant')
-        //right here
-        console.log('hello')
+        } else {
+          cells[giant].classList.remove('giant')
+          giants[i] -= 1
+          cells[giant].classList.add('giant')
+          console.log('stage 3')
+        }
+  
+        //moving right 
+      } else if (giantDirection === 'right') {
+        console.log('stage 4')
+
+        if (giant[giants.length - 1] === width % width - 1) {
+          giantDirection = 'left'
+          console.log('stage 5')
+
+        } else {
+          console.log(cells[giant])
+          cells[giant].classList.remove('giant')
+          console.log(cells[giant])
+          giants[i] += 1
+          cells[giant].classList.add('giant')
+          console.log('stage 6')
+
+        }
+  
+        //STOPS IF: 1 hits ground 2 hits DQ 3 hit by arrow
+        //if hits ground
+        // } else if (!(giants + width >= width ** 2)) {
+        //   clearInterval(giantMoveId)
+        //   // console.log('Giants have breached the surface')
+        //   //gameOver()
+        //   //if its DQ
+  
+        //   //if it hits DQ
+        // } else if (cells[giants].classList.contains('giant', 'donQ')) {
+        //   clearInterval(giantMoveId)
+        //   //gameOver()
+        //   console.log('DQ has been clobbered')
+        // }
       }
-
-      //moving right 
-    } else if (giantDirection === 'right') {
-      if ((giants.length - 1) === width) {
-        giantDirection = 'left'
-      } else {
-        cells[giant].classList.remove('giant')
-        giant += 1
-        cells[giant].classList.add('giant')
-        //right here
-        console.log('hello')
-      }
-      //if hits ground
-      // } else if (!(giants + width >= width ** 2)) {
-      //   clearInterval(giantMoveId)
-      //   // console.log('Giants have breached the surface')
-      //   //gameOver()
-      //   //if its DQ
-
-      //   //if it hits DQ
-      // } else if (cells[giants].classList.contains('giant', 'donQ')) {
-      //   clearInterval(giantMoveId)
-      //   //gameOver()
-      //   console.log('DQ has been clobbered')
-      // }
-    }
-  })
+    })
+  }, 1000)
 }
 
-console.log(giants)
 
 
 
@@ -168,14 +173,14 @@ console.log(giants)
 //   if collide with border -> disappear 
 // } TIME INTERVAaL
 
-// function restartLevel() {
-//   alert you lose 
+// function gameOver() {
+//   alert you lose (inner HTML)
 //   buttonnnn to restartLevel
-//   clear everything
+//   clear everything & reload game board
 // }
 
 // function youWin() {
 // alert you win 
 // button for restart/next level
-//   clear everything
+//   clear everything & (re)load game board
 // }

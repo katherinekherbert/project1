@@ -24,6 +24,8 @@ body {
   font-size: 10px;
 }
 
+
+/* NONE OF IMAGES PULL UP ON FOREIGN COMPUTER */
 .donQ {
   background-image: url('https://i.imgur.com/jw2jFNi.png');
   background-size: contain;
