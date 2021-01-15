@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  border: 1px brown;
+  width: 600px;
+  height: 600px;
+  flex-wrap: wrap;
+}
+
+.cell {
+  font-size: 10px;
+}
+
+.donQ {
+  background-image: url('https://i.imgur.com/jw2jFNi.png');
+  background-size: contain;
+}
+
+.sword {
+  background-image: url('https://i.imgur.com/UYoEt1u.png');
+  background-size: contain;
+}
+
+.giant {
+  background-image: url('https://i.imgur.com/rdhCQas.png');
+  background-size: contain;
+}
+
+.explosion {
+  background-image: url('https://i.imgur.com/Iaoyhs5.png');
+  background-size: contain;
+}
+
