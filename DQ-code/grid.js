@@ -15,8 +15,7 @@ const giants = [0, 1, 2, 3]
 let giantDirection = 'right'
 // let giantMoveId
 
-
-//points
+// points
 // const points = document.getElementById('points')
 // let points = 0
 
@@ -31,7 +30,7 @@ for (let index = 0; index < width ** 2; index++) {
   cells.push(cell)
   //Number each cell by its index
   cell.innerHTML = index
-  // Set width and heigh of cells
+  // Set width and height of cells
   cell.style.width = `${100 / width}%`
   cell.style.height = `${100 / width}%`
 }
@@ -55,7 +54,7 @@ document.addEventListener('keyup', (event) => {
     cells[sword].classList.remove('sword')
     sword += 1
     cells[sword].classList.add('sword')
-    
+
     //move left
   } else if (key === 'ArrowLeft' && !(donQ % width === 0)) {
     cells[donQ].classList.remove('donQ')
@@ -92,80 +91,98 @@ function throwSword() {
       } else if (key === 'ArrowUp' && sword > width) {
         cells[sword].classList.remove('sword')
         //MAKE IT STAY IN STRAIGHT LINE 
-        //MAKE IT APPEAR IMMEDIATELY AFTER CLICKING UP
         sword -= 10
         cells[sword].classList.add('sword')
       }
-    }, 1000)
+    }, 100)
   })
+  // if (cells[giants].classList.contains('giant', 'sword')) {
+  //   cells[sword].classList.remove('sword')
+  //   cells[sword].classList.remove('giant')
+  //   cells[sword].classList.add('explosion')
+  //   setTimeout(() => cells[sword].classList.remove('explosion'), 250)
+  // }
 }
+
+
 
 //GIANTS
 //create giant 
 function createGiant() {
   giants.forEach(giant => cells[giant].classList.add('giant'))
 }
+
 // move giants 
 function moveGiants() {
   setInterval(() => {
-    console.log(giants)
-    giants.forEach((giant, i) => {
+    
+    //moving left 
+    if (giantDirection === 'left') {
+      console.log('stage 1')
 
-      //moving left 
-      if (giantDirection === 'left') {
-        console.log('stage 1')
-        if (giants[0] === width % 0) {
-          giantDirection = 'right'
-          console.log('stage 2')
+      if (giants[0] % width === 0) {
+        giantDirection = 'right'
 
-        } else {
-          cells[giant].classList.remove('giant')
+        for (let i = 0; i <= giants.length - 1; i++) {
+          cells[giants[i]].classList.remove('giant')
+        }
+        for (let i = 0; i <= giants.length - 1; i++) {
+          giants[i] += 10
+        }
+        for (let i = 0; i <= giants.length - 1; i++) {
+          cells[giants[i]].classList.add('giant')
+        }
+
+        console.log('stage 2')
+
+      } else {
+        for (let i = 0; i <= giants.length - 1; i++) {
+          cells[giants[i]].classList.remove('giant')
+        }
+        for (let i = 0; i <= giants.length - 1; i++) {
+          console.log(giants[i])
           giants[i] -= 1
-          cells[giant].classList.add('giant')
-          console.log('stage 3')
+          console.log(giants[i])
         }
-  
-        //moving right 
-      } else if (giantDirection === 'right') {
-        console.log('stage 4')
-
-        if (giant[giants.length - 1] === width % width - 1) {
-          giantDirection = 'left'
-          console.log('stage 5')
-
-        } else {
-          console.log(cells[giant])
-          cells[giant].classList.remove('giant')
-          console.log(cells[giant])
-          giants[i] += 1
-          cells[giant].classList.add('giant')
-          console.log('stage 6')
-
+        for (let i = 0; i <= giants.length - 1; i++) {
+          cells[giants[i]].classList.add('giant')
         }
-  
-        //STOPS IF: 1 hits ground 2 hits DQ 3 hit by arrow
-        //if hits ground
-        // } else if (!(giants + width >= width ** 2)) {
-        //   clearInterval(giantMoveId)
-        //   // console.log('Giants have breached the surface')
-        //   //gameOver()
-        //   //if its DQ
-  
-        //   //if it hits DQ
-        // } else if (cells[giants].classList.contains('giant', 'donQ')) {
-        //   clearInterval(giantMoveId)
-        //   //gameOver()
-        //   console.log('DQ has been clobbered')
-        // }
+        console.log('stage 3')
       }
-    })
-  }, 1000)
+
+      //moving right 
+    } else if (giantDirection === 'right') {
+      console.log('stage 4')
+
+      if (giants[giants.length - 1] % width === width - 1 ) {        
+        giantDirection = 'left'
+
+        for (let i = 0; i <= giants.length - 1; i++) {
+          cells[giants[i]].classList.remove('giant')
+        }
+        for (let i = 0; i <= giants.length - 1; i++) {
+          giants[i] += 10
+        }
+        for (let i = 0; i <= giants.length - 1; i++) {
+          cells[giants[i]].classList.add('giant')
+        }
+        console.log('stage 7')
+
+      } else {
+        for (let i = 0; i <= giants.length - 1; i++) {
+          cells[giants[i]].classList.remove('giant')
+        }
+        for (let i = 0; i <= giants.length - 1; i++) {
+          giants[i] += 1
+        }
+        for (let i = 0; i <= giants.length - 1; i++) {
+          cells[giants[i]].classList.add('giant')
+        }
+        console.log('stage 6')
+      }
+    }
+  }, 100)
 }
-
-
-
-
-
 
 // function dropBomb() {
 //   Math.floor etc to pick a random alien 
@@ -177,6 +194,21 @@ function moveGiants() {
 //   alert you lose (inner HTML)
 //   buttonnnn to restartLevel
 //   clear everything & reload game board
+ // STOPS IF: 1 hits ground 2 hits DQ 3 hit by arrow
+      // if hits ground
+      //  else if (!(giants + width >= width ** 2)) {
+      //   clearInterval(giantMoveId)
+      //   // console.log('Giants have breached the surface')
+      //   //gameOver()
+      //   //if its DQ
+
+      //   //if it hits DQ
+      // } else if (cells[giants].classList.contains('giant', 'donQ')) {
+      //   clearInterval(giantMoveId)
+      //   //gameOver()
+      //   console.log('DQ has been clobbered')
+      // }
+      //       }
 // }
 
 // function youWin() {

@@ -42,7 +42,6 @@ body {
 }
 
 .explosion {
-  background-image: url('https://i.imgur.com/Iaoyhs5.png');
-  background-size: contain;
+  background-color: orange;
 }
 
