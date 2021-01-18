@@ -13,7 +13,8 @@ let sword = 84
 
 const giants = [0, 1, 2, 3]
 let giantDirection = 'right'
-// let giantMoveId
+let giantMoveId
+let giantsDefeated = []
 
 // points
 // const points = document.getElementById('points')
@@ -74,37 +75,58 @@ function startGame() {
   createGiant()
   throwSword()
   moveGiants()
+
 }
 
 startGame()
 
 
 function throwSword() {
+  //up arrow key command + reappear if disappears on top 
   document.addEventListener('keyup', (event) => {
     const key = event.key
     const swordId = setInterval(() => {
       if (key === 'ArrowUp' && sword < width) {
         cells[sword].classList.remove('sword')
         clearInterval(swordId)
-        sword = (donQ - 10)
+        sword = (donQ - width)
         cells[sword].classList.add('sword')
       } else if (key === 'ArrowUp' && sword > width) {
         cells[sword].classList.remove('sword')
-        //MAKE IT STAY IN STRAIGHT LINE 
-        sword -= 10
+        //MAKE IT GO STRAIGHT
+        sword -= width
         cells[sword].classList.add('sword')
       }
     }, 100)
   })
-  // if (cells[giants].classList.contains('giant', 'sword')) {
-  //   cells[sword].classList.remove('sword')
-  //   cells[sword].classList.remove('giant')
-  //   cells[sword].classList.add('explosion')
-  //   setTimeout(() => cells[sword].classList.remove('explosion'), 250)
-  // }
 }
 
+//if sword hits giant 
+const swordHit = setInterval(() => {
+  for (let i = 0; i < giants.length; i++) {
+    if (cells[giants[i]].classList.contains('sword')) {
+      const currentCell = cells[sword]
 
+      cells[sword].classList.remove('sword')
+      cells[sword].classList.remove('giant')
+
+      console.log('hi')
+
+      cells[sword].classList.add('explosion')
+      //length of explosion
+      //doesn't remove(?)
+      setTimeout(() => {
+        currentCell.classList.remove('explosion')
+        console.log('test')
+      }, 250)
+
+      console.log(giants)
+      giants.splice(i, 1)
+      console.log(giants)
+      // points++
+    }
+  }
+}, 100)
 
 //GIANTS
 //create giant 
@@ -114,11 +136,9 @@ function createGiant() {
 
 // move giants 
 function moveGiants() {
-  setInterval(() => {
-    
+  const giantMoveId = setInterval(() => {
     //moving left 
     if (giantDirection === 'left') {
-      console.log('stage 1')
 
       if (giants[0] % width === 0) {
         giantDirection = 'right'
@@ -133,28 +153,23 @@ function moveGiants() {
           cells[giants[i]].classList.add('giant')
         }
 
-        console.log('stage 2')
 
       } else {
         for (let i = 0; i <= giants.length - 1; i++) {
           cells[giants[i]].classList.remove('giant')
         }
         for (let i = 0; i <= giants.length - 1; i++) {
-          console.log(giants[i])
           giants[i] -= 1
-          console.log(giants[i])
         }
         for (let i = 0; i <= giants.length - 1; i++) {
           cells[giants[i]].classList.add('giant')
         }
-        console.log('stage 3')
       }
 
       //moving right 
     } else if (giantDirection === 'right') {
-      console.log('stage 4')
 
-      if (giants[giants.length - 1] % width === width - 1 ) {        
+      if (giants[giants.length - 1] % width === width - 1) {
         giantDirection = 'left'
 
         for (let i = 0; i <= giants.length - 1; i++) {
@@ -166,7 +181,6 @@ function moveGiants() {
         for (let i = 0; i <= giants.length - 1; i++) {
           cells[giants[i]].classList.add('giant')
         }
-        console.log('stage 7')
 
       } else {
         for (let i = 0; i <= giants.length - 1; i++) {
@@ -178,11 +192,38 @@ function moveGiants() {
         for (let i = 0; i <= giants.length - 1; i++) {
           cells[giants[i]].classList.add('giant')
         }
-        console.log('stage 6')
       }
     }
-  }, 100)
+
+    //game over scenarios 
+
+    //if giant hits DQ
+    //DOESN'T SEEM TO WORK
+    for (let i = 0; i <= giants.length - 1; i++) {
+      if (cells[donQ].classList.contains('giant', 'donQ')) {
+        console.log('DQ clobbered')
+        cells[giants[i]].classList.remove('giant')
+        cells[giants[i]].classList.remove('donQ')
+        cells[donQ].classList.add('explosion')
+        clearInterval(giantMoveId)
+      }
+    }
+
+    //if giant hits ground
+    for (let i = 0; i <= giants.length - 1; i++) {
+      if (giants[i] > (cells.length - (width - 1))) {
+        cells[giants[i]].classList.remove('giant')
+        cells[giants[i]].classList.add('explosion')
+        console.log('Giants have breached')
+        clearInterval(giantMoveId)
+      }
+    }
+  }, 300)
 }
+
+
+
+
 
 // function dropBomb() {
 //   Math.floor etc to pick a random alien 
@@ -191,24 +232,54 @@ function moveGiants() {
 // } TIME INTERVAaL
 
 // function gameOver() {
-//   alert you lose (inner HTML)
-//   buttonnnn to restartLevel
-//   clear everything & reload game board
- // STOPS IF: 1 hits ground 2 hits DQ 3 hit by arrow
-      // if hits ground
-      //  else if (!(giants + width >= width ** 2)) {
-      //   clearInterval(giantMoveId)
-      //   // console.log('Giants have breached the surface')
-      //   //gameOver()
-      //   //if its DQ
 
-      //   //if it hits DQ
+// }
+
+// gameOver()
+
+//giant hits DQ
+// if (cells[donQ].classList.contains('giant', 'donQ')) {
+//   cells[giants[i]].classList.remove('giant')
+//   cells[giants[i]].classList.remove('donQ')
+//   cells[donQ].classList.add('explosion')
+
+//   console.log('The giants have clobbered Don Quixote!')
+//   clearInterval(giantMoveId)
+// }
+
+//giant hits bottom border 
+
+
+//   alert you lose (inner HTML)
+
+//   buttonnnn to restartLevel
+
+//   clear everything & reload game board
+
+
+
+
+//  STOPS IF: 1 hits ground 2 hits DQ 3 hit by arrow
+//       if hits ground
+
+
+        //if it hits DQ
       // } else if (cells[giants].classList.contains('giant', 'donQ')) {
       //   clearInterval(giantMoveId)
       //   //gameOver()
       //   console.log('DQ has been clobbered')
-      // }
-      //       }
+      // // }
+      // //       }
+// }
+
+// //game over scenarios 
+// if (cells[donQ].classList.contains('giant', 'donQ')) {
+//   cells[giants[i]].classList.remove('giant')
+//   cells[giants[i]].classList.remove('donQ')
+//   cells[donQ].classList.add('explosion')
+
+//   console.log('The giants have clobbered Don Quixote!')
+//   clearInterval(giantMoveId)
 // }
 
 // function youWin() {
