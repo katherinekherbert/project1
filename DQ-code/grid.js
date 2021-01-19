@@ -1,3 +1,13 @@
+// //overlay
+// function on() {
+//   document.getElementById('overlay').style.display = 'block'
+// }
+
+// function off() {
+//   document.getElementById('overlay').style.display = 'none'
+// }
+// on()
+
 
 // Make square grid
 const grid = document.querySelector('.grid')
@@ -71,6 +81,7 @@ document.addEventListener('keyup', (event) => {
 //FUNCTIONZZZ
 function startGame() {
   play = true
+  // off()
   createGiant()
   throwSword()
   moveGiants()
@@ -109,10 +120,10 @@ const swordHit = setInterval(() => {
       cells[sword].classList.remove('sword')
       cells[sword].classList.remove('giant')
 
-      cells[sword].classList.add('explosion')
+      cells[sword].classList.add('windmill')
       //length of explosion
       setTimeout(() => {
-        currentCell.classList.remove('explosion')
+        currentCell.classList.remove('windmill')
       }, 250)
 
       giants.splice(i, 1)
