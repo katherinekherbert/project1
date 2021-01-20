@@ -4,14 +4,42 @@
 
 body {
   /* height: 100vh; */
+  background-image: url('../project1/images/background.png')
+
+}
+
+header {
+  display: flex;
+}
+
+h1 {
+  background-color: white;
+  font-family: 'Cormorant', serif;
+  text-align: center;
+
+}
+
+.flex-content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin: 0
+  font-family: 'Cormorant', serif;
+}
+
+.game-board {
+  background-color: #d6b3f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px;
 }
 
 .grid {
+  background-image: url('../project1/images/campo\ de\ criptana.png');
+  background-size: cover;
+
   display: flex;
   flex-direction: row;
   border: 1px brown;
@@ -25,6 +53,51 @@ body {
 }
 
 
+.score {
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* RIGHT SIDE STUFF */
+.content {
+  flex-direction: column;
+  margin: 50px;
+  
+  
+}
+
+/* description box */
+#goal {
+  background-color: pink;
+  padding: 2%;
+  margin: 5%;
+
+}
+
+/* button */
+/* center class of button */
+
+#start-button {
+  background-color: lightblue;
+
+}
+
+/* how to play box */
+#how-to-play {
+  text-align: center;
+}
+
+#rules {
+  background-color: yellow;
+  padding: 2%;
+  margin: 5%;
+}
+
+
+
+
+/* game icons */
 /* set alternative images just in case */
 .donQ {
   background-image: url('../project1/images/don-quixote.png');
@@ -51,12 +124,6 @@ body {
   background-size: contain;
   /* background-color: orange; */
 
-}
-
-.windmill {
-  background-image: url('../project1/images/windmill.png');
-  background-size: contain;
-  /* background-color: blue; */
 }
 
 .bomb {

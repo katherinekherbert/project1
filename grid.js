@@ -125,10 +125,10 @@ const swordHit = setInterval(() => {
       cells[sword].classList.remove('sword')
       cells[sword].classList.remove('giant')
 
-      cells[sword].classList.add('windmill')
+      cells[sword].classList.add('explosion')
       //length of explosion
       setTimeout(() => {
-        currentCell.classList.remove('windmill')
+        currentCell.classList.remove('explosion')
       }, 250)
 
       giants.splice(i, 1)
@@ -270,10 +270,14 @@ function dropBomb() {
 
       cells[bombPosition].classList.remove('bomb')
       cells[bombPosition].classList.remove('donQ')
+      cells[bombPosition].classList.add('explosion')
+
+      clearInterval(bombMove)
+      clearInterval(giantMoveId)
       
+      alert('Don Quixote has been attacked by a vicious sheep! You lose')
       //gameOver()
 
-      dropBomb()
 
       //if bomb hits ground
     } else if (giants.length > 0 && bombPosition >= 90 && bombPosition <= 100) {
