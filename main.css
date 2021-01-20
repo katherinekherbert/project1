@@ -27,43 +27,43 @@ body {
 
 /* set alternative images just in case */
 .donQ {
-  /* background-image: url('../images/don-quixote.png'); */
+  background-image: url('../project1/images/don-quixote.png');
   background-size: contain;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .sword {
-  /* background-image: url(''); */
+  background-image: url('../project1/images/sword.png');
   background-size: contain;
-  background-color: yellow;
+  /* background-color: yellow; */
 
 }
 
 .giant {
-  /* background-image: url('../images/giant.svg'); */
+  background-image: url('../project1/images/giant.png');
   background-size: contain;
-  background-color: green;
+  /* background-color: green; */
 
 }
 
 .explosion {
-  /* background-image: url('../images/explosion.svg'); */
+  background-image: url('../project1/images/explosion.png');
   background-size: contain;
-  background-color: orange;
+  /* background-color: orange; */
 
 }
 
 .windmill {
-  /* background-image: url('../images/windmill.svg'); */
+  background-image: url('../project1/images/windmill.png');
   background-size: contain;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .bomb {
-  /* background-image: url('../images/sheep.svg'); */
+  background-image: url('../project1/images/sheep.png');
   background-size: contain;
 
-  background-color: purple;
+  /* background-color: purple; */
 }
 
 
