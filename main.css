@@ -5,6 +5,7 @@
 body {
   /* height: 100vh; */
   background-color: #D2B48C;
+  /* background-image: url('../project1/images/background.png') */
 }
 
 header {
@@ -25,27 +26,25 @@ h1 {
 
 .flex-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   flex-direction: row;
   font-family: 'Cormorant', serif;
 }
 
 /* left side */
 .game-board {
-  background-color: #c1bddb;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px;
+  margin: 0px 10px 0px 10px;
 }
 
 .grid {
   /* background-image: url('../project1/images/campo\ de\ criptana.png'); */
   background-size: cover;
   background-image: url('../project1/images/criptana.png');
-
   display: flex;
   flex-direction: row;
   /* border: 1px brown; */
@@ -58,17 +57,47 @@ h1 {
   font-size: 10px;
 }
 
-
 .score {
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
+  background-color: #c1bddb;
+  width: 100%;
+  text-align: center;
 }
 
+/* button */
+.button {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.start {
+  width: 100%;
+  background-color: #E1CE7A;
+  padding: 14px 28px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Cormorant', serif;
+}
+
+.restart {
+  width: 100%;
+  background-color: #FFB499;
+  padding: 14px 28px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Cormorant', serif;
+}
 
 /* RIGHT SIDE STUFF */
 .content {
+  display: flex;
   flex-direction: column;
-  margin: 20px;
+  justify-content: center;
+  margin: 0px 10px 0px 10px;
 }
 
 /* description box */
@@ -79,18 +108,6 @@ h1 {
 }
 
 
-/* button */
-.block {
-  display: block;
-  width: 100%;
-  border: none;
-  background-color: #E1CE7A;
-  padding: 14px 28px;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  font-family: 'Cormorant', serif;
-}
 
 /* how to play box */
 #how-to-play {

@@ -5,17 +5,19 @@
 const grid = document.querySelector('.grid')
 
 //play button
-const start = document.querySelector('.block')
+const start = document.querySelector('.start')
+//restart button
+const restart = document.querySelector('.restart')
 
 // Specify the width of the grid + placement of donQ (aka the shooter)
-const width = 10
+const width = 15
 const cells = []
 
 //starting specs
 let play = false
-let donQ = 94
-let sword = 84
-const giants = [0, 1, 2, 3]
+let donQ = 217
+let sword = 202
+const giants = [0, 1, 2, 3, 16, 17, 18, 19]
 let giantDirection = 'right'
 let giantMoveId
 let bombMove
@@ -81,6 +83,8 @@ document.addEventListener('keyup', (event) => {
 
 start.addEventListener('click', () => {
   function startGame() {
+    document.querySelector('.start').disabled = true
+
     play = true
     // off()
     createGiant()
@@ -91,6 +95,9 @@ start.addEventListener('click', () => {
   startGame()
 })
 
+function resetGame() {
+  window.location.reload()
+}
 
 
 function throwSword() {
@@ -103,7 +110,7 @@ function throwSword() {
         clearInterval(swordId)
         sword = (donQ - width)
         cells[sword].classList.add('sword')
-      } else if (key === 'ArrowUp' && sword > width) {
+      } else if (key === 'ArrowUp' && sword > width - 1) {
         cells[sword].classList.remove('sword')
         //MAKE IT GO STRAIGHT
         sword -= width
@@ -132,6 +139,7 @@ const swordHit = setInterval(() => {
       }, 250)
 
       giants.splice(i, 1)
+
     }
   }
 }, 100)
@@ -155,7 +163,7 @@ function moveGiants() {
           cells[giants[i]].classList.remove('giant')
         }
         for (let i = 0; i <= giants.length - 1; i++) {
-          giants[i] += 10
+          giants[i] += width
         }
         for (let i = 0; i <= giants.length - 1; i++) {
           cells[giants[i]].classList.add('giant')
@@ -184,7 +192,7 @@ function moveGiants() {
           cells[giants[i]].classList.remove('giant')
         }
         for (let i = 0; i <= giants.length - 1; i++) {
-          giants[i] += 10
+          giants[i] += width
         }
         for (let i = 0; i <= giants.length - 1; i++) {
           cells[giants[i]].classList.add('giant')
@@ -206,26 +214,28 @@ function moveGiants() {
     //game over scenarios 
 
     //if giant hits DQ
-    for (let i = 0; i <= giants.length - 1; i++) {
-      if (cells[donQ].classList.contains('giant', 'donQ')) {
-        console.log('DQ clobbered')
-        cells[giants[i]].classList.remove('donQ')
-        clearInterval(giantMoveId)
+    // for (let i = 0; i <= giants.length - 1; i++) {
+    //   if (cells[donQ].classList.contains('giant', 'donQ')) {
+    //     cells[giants[i]].classList.remove('donQ')
+    //     clearInterval(giantMoveId)
+    //     clearInterval(swordHit)
 
-        alert('Your best was not enough: Don Quixote has been clobbered by the giants')
-        //gameOver()
-      }
-    }
+    //     alert('Your best was not enough: Don Quixote has been clobbered by the giants')
+    //     window.location.reload()
+    //     break
+    //   }
+    // }
 
     //if giant hits ground
     for (let i = 0; i <= giants.length - 1; i++) {
-      if (giants[i] > (cells.length - (width - 1))) {
-        console.log('Giants have breached')
+      if (giants[i] >= (cells.length - (width - 1))) {
         clearInterval(giantMoveId)
         clearInterval(bombMove)
 
         alert('Your best was not enough: Don Quixote cannot withstand hand-to-hand combat with these giants')
-        //gameOver()
+        window.location.reload()
+        console.log('why are you not reloading')
+        break
       }
     }
 
@@ -234,8 +244,13 @@ function moveGiants() {
       points += victory
       score.innerHTML = points
       clearInterval(bombMove)
+      clearInterval(giantMoveId)
 
       alert('You did it! You helped Don Quixote defeat the giants. Thank you for your service')
+      window.location.reload()
+
+      console.log('why tf are you not reloading')
+
       //gameOver()
 
     }
@@ -274,25 +289,22 @@ function dropBomb() {
 
       clearInterval(bombMove)
       clearInterval(giantMoveId)
-      
+
       alert('Don Quixote has been attacked by a vicious sheep! You lose')
+      window.location.reload()
+
       //gameOver()
 
 
       //if bomb hits ground
-    } else if (giants.length > 0 && bombPosition >= 90 && bombPosition <= 100) {
-      console.log('bomb hit ground')
+    } else if (giants.length > 0 && bombPosition >= 210 && bombPosition <= 224) {
 
       cells[bombPosition].classList.remove('bomb')
       cells[bombPosition].classList.add('explosion')
 
-      console.log('ground exploded successfully')
-
       setTimeout(() => {
         cells[bombPosition].classList.remove('explosion')
       }, 90)
-
-      console.log('ground explosion removed')
 
       clearInterval(bombMove)
 
@@ -305,39 +317,11 @@ function dropBomb() {
       bombPosition += width
       cells[bombPosition].classList.add('bomb')
 
-      console.log('bombs moving')
-
     }
-  }, 700)
+  }, 300)
 
 }
 
-
-function gameOver() {
-
-}
-
-gameOver()
-
-
-
-
-//   alert you lose (inner HTML)
-
-//   buttonnnn to restartLevel
-
-//   clear everything & reload game board
-
-
-
-
-
-
-// function youWin() {
-// alert you win 
-// button for restart/next level
-//   clear everything & (re)load game board
-// }
 
 
 
