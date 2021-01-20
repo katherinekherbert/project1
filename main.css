@@ -4,20 +4,24 @@
 
 body {
   /* height: 100vh; */
-  background-image: url('../project1/images/background.png')
-
+  background-color: #D2B48C;
 }
 
 header {
   display: flex;
+  justify-content: center;
+  padding: 5px 0px 5px 0px;
+
 }
 
 h1 {
-  background-color: white;
+  background-color: #A2C7E5;
   font-family: 'Cormorant', serif;
   text-align: center;
-
+  padding: 15px;
 }
+
+
 
 .flex-content {
   display: flex;
@@ -27,22 +31,24 @@ h1 {
   font-family: 'Cormorant', serif;
 }
 
+/* left side */
 .game-board {
-  background-color: #d6b3f5;
+  background-color: #c1bddb;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 50px;
+  margin: 20px;
 }
 
 .grid {
-  background-image: url('../project1/images/campo\ de\ criptana.png');
+  /* background-image: url('../project1/images/campo\ de\ criptana.png'); */
   background-size: cover;
+  background-image: url('../project1/images/criptana.png');
 
   display: flex;
   flex-direction: row;
-  border: 1px brown;
+  /* border: 1px brown; */
   width: 600px;
   height: 600px;
   flex-wrap: wrap;
@@ -62,40 +68,50 @@ h1 {
 /* RIGHT SIDE STUFF */
 .content {
   flex-direction: column;
-  margin: 50px;
-  
-  
+  margin: 20px;
 }
 
 /* description box */
 #goal {
-  background-color: pink;
+  background-color: #e5c1bd;
   padding: 2%;
   margin: 5%;
-
 }
 
+
 /* button */
-/* center class of button */
-
-#start-button {
-  background-color: lightblue;
-
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #E1CE7A;
+  padding: 14px 28px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Cormorant', serif;
 }
 
 /* how to play box */
 #how-to-play {
   text-align: center;
+  font-size: 20px;
 }
 
 #rules {
-  background-color: yellow;
+  background-color: #9DBDAE;
   padding: 2%;
   margin: 5%;
 }
 
-
-
+/* thank you credits */
+footer {
+  font-family: 'Cormorant', serif;
+  background-color: #A2C7E5;
+  margin: 5%;
+  text-align: center;
+  padding: 5px 0px 30px 0px;
+}
 
 /* game icons */
 /* set alternative images just in case */

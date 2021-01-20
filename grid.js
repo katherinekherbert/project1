@@ -5,7 +5,7 @@
 const grid = document.querySelector('.grid')
 
 //play button
-const start = document.querySelector('#start-button')
+const start = document.querySelector('.block')
 
 // Specify the width of the grid + placement of donQ (aka the shooter)
 const width = 10
