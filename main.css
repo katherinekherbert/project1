@@ -9,7 +9,7 @@ body {
 }
 
 .header {
-  /* background-color: #A2C7E5; */
+  color: #493829;
   display: flex;
   justify-content: center;
   font-family: 'Cormorant', serif;
@@ -22,11 +22,12 @@ body {
 /* overlay */
 #overlay {
   font-family: 'Cormorant', serif;
+  background-color: rgba(129, 108, 91, 0.8);
   position: relative; 
   display: none;
   width: 600px; 
   height: 600px; 
-  background-color: rgba(241, 128, 226, 0.8); 
+  /* background-color: rgba(241, 128, 226, 0.8);  */
   z-index: 2; 
   cursor: pointer; 
   text-align: center;
@@ -42,6 +43,10 @@ body {
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
 }
+
+/* #start-overlay-mobile {
+  display: none;
+} */
 
 
 /* content */
@@ -82,7 +87,7 @@ body {
 }
 
 .score {
-  background-color: #c1bddb;
+  background-color: #B99C63;
   width: 45%;
   text-align: center;
 }
@@ -110,29 +115,30 @@ body {
   margin: 0px;
   display: flex;
   flex-direction: column;
+  background-color: #4E6172;
 
 }
 
 #rules-title {
   text-align: center;
+  color: white;
   font-size: 20px;
   width: 100%;
-  background-color: lightblue;
   padding: 0px;
   /* border: 5px solid purple; */
-justify-content: space-around;
+  justify-content: space-around;
 }
 
 #rules-title1 {
   font-style: italic;
-  background-color: green;
+  background-color: #83929f;
   text-align: center;
   width: 100%
 }
 
 #rules-title2 {
   font-style: italic;
-  background-color: yellow;
+  background-color: #83929f;
   text-align: center;
   width: 100%
 }
@@ -148,11 +154,11 @@ justify-content: space-around;
 }
 
 #rules-copy1 {
-  background-color: lightgreen;
+  background-color: #A3ADB8;
 }
 
 #gc-comp-rules-copy1 {
-  background-color: lightgreen;
+  background-color: #A3ADB8;
 }
 
 #gc-mobile-rules-copy1 {
@@ -161,6 +167,7 @@ justify-content: space-around;
 
 #rules-copy2 {
   background-color: lightyellow;
+  background-color: #A3ADB8;
 }
 
 .win-lose {
@@ -221,8 +228,10 @@ justify-content: space-around;
 }
 
 .start {
-  width: 100%;
-  background-color: #E1CE7A;
+  width: 50%;
+  /* background-color: #8f3b1b; */
+    background-color: #DBCA69;
+
   padding: 14px 28px;
   font-size: 20px;
   cursor: pointer;
@@ -232,7 +241,8 @@ justify-content: space-around;
 
 .restart {
   width: 100%;
-  background-color: #ffb347;
+  background-color: #D57500;
+  /* background-color: #DBCA69; */
   padding: 14px 28px;
   font-size: 20px;
   cursor: pointer;
@@ -259,6 +269,8 @@ justify-content: space-around;
   flex: 2;
   text-align: center;
   margin: 2%;
+  background-color: #404f24;
+
   /* border: 5px solid brown; */
 
 }
@@ -267,7 +279,7 @@ justify-content: space-around;
   text-align: center;
   font-size: 20px;
   width: 100%;
-  background-color: lightblue;
+  color: white;
 }
 
 .make-boxes{
@@ -284,13 +296,13 @@ justify-content: space-around;
 
 #read {
   flex: 1;
-  background-color: pink;
+  background-color: #668d3c;
   margin: 1%;
 }
 
 #buy {
   flex: 1;
-  background-color: blueviolet;
+  background-color: #BDD09F;
   margin: 1%;
 
 }
@@ -304,21 +316,20 @@ justify-content: space-around;
 
 #bne {
   flex: 1;
-  background-color: blueviolet;
+  background-color: #BDD09F;
   margin: 1%;
 }
 
 #guide {
   flex: 1;
-  background-color: pink;
   margin: 1%;
-
+  background-color: #668d3c;
 }
 
 /* thank you credits */
 #credits {
   font-family: 'Cormorant', serif;
-  background-color: #A2C7E5;
+  background-color: #B99C63;
   text-align: center;
   margin: 5%;
   flex: 1;
@@ -407,7 +418,7 @@ justify-content: space-around;
 
 .move-left {
   width: 100%;
-  background-color: lightsalmon;
+  background-color: #D57500;
   padding: 14px 28px;
   font-size: 20px;
   cursor: pointer;
@@ -419,7 +430,7 @@ justify-content: space-around;
 
 .move-right {
   width: 100%;
-  background-color: lightsalmon;
+  background-color: #D57500;
   padding: 14px 28px;
   font-size: 20px;
   cursor: pointer;
@@ -431,7 +442,7 @@ justify-content: space-around;
 
 .shoot {
   width: 100%;
-  background-color: red;
+  background-color: #DBCA69;
   padding: 14px 28px;
   font-size: 20px;
   cursor: pointer;
@@ -461,8 +472,12 @@ justify-content: space-around;
 }
 
 #gc-mobile-rules-copy1 {
-  background-color: lightgreen;
+  background-color: #A3ADB8;
   display: flex;
+}
+
+.button {
+  display: none;
 }
 
 .extra-info {
@@ -524,6 +539,24 @@ justify-content: space-around;
 
 #goal {
   font-size: 13px;
+}
+
+/* #start-overlay-computer {
+  display: none;
+}
+
+#start-overlay-mobile {
+  display: block;
+} */
+
+.start {
+  width: 75%;
+  background-color: #E1CE7A;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Cormorant', serif;
 }
 
 }

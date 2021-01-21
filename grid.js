@@ -71,7 +71,7 @@ document.addEventListener('keyup', (event) => {
   const key = event.key
 
   //move right
-  if (key === 'd' || key === 'D' && !(donQ % width === width - 1)) {
+  if ((key === 'd' || key === 'D') && !(donQ % width === width - 1)) {
     cells[donQ].classList.remove('donQ')
     donQ += 1
     cells[donQ].classList.add('donQ')
@@ -81,7 +81,7 @@ document.addEventListener('keyup', (event) => {
     cells[sword].classList.add('sword')
 
     //move left
-  } else if (key === 'a' || key === 'A' && !(donQ % width === 0)) {
+  } else if ((key === 'a' || key === 'A') && !(donQ % width === 0)) {
     cells[donQ].classList.remove('donQ')
     donQ -= 1
     cells[donQ].classList.add('donQ')
@@ -246,7 +246,7 @@ function moveGiants() {
         clearInterval(giantMoveId)
         clearInterval(swordHit)
 
-        alert('Your best was not enough: Don Quixote has been clobbered by the giants')
+        alert('"Truly I was born to be an example of misfortune and a target at which the arrows of adversary are aimed" -Don Quixote. You lose! Try again')
 
         window.location.reload()
         break
@@ -260,7 +260,7 @@ function moveGiants() {
       clearInterval(bombMove)
       clearInterval(giantMoveId)
 
-      alert('You did it! You helped Don Quixote defeat the giants. Thank you for your service')
+      alert('"Diligence is the mother of good fortune" -Don Quixote. You won! Play again')
 
       window.location.reload()
 
@@ -303,7 +303,7 @@ function dropBomb() {
       clearInterval(bombMove)
       clearInterval(giantMoveId)
 
-      alert('Don Quixote has been attacked by a vicious sheep! You lose')
+      alert('"Truly I was born to be an example of misfortune and a target at which the arrows of adversary are aimed" -Don Quixote. You lose! Try again')
 
       window.location.reload()
 
