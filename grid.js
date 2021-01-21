@@ -23,6 +23,10 @@ let giantDirection = 'right'
 let giantMoveId
 let bombMove
 
+const left = document.querySelector('.move-left')
+const right = document.querySelector('.move-right')
+const shoot = document.querySelector('.shoot')
+
 // points
 const score = document.querySelector('#points')
 let points = 0
@@ -32,7 +36,20 @@ let diffuseBomb = 25
 // points.innerHTML = points
 
 
+
+
 //SET UPPPPPPPPPPP
+//overlay
+// function on() {
+//   document.getElementById('overlay').style.display = 'block'
+// }
+
+// function off() {
+//   document.getElementById('overlay').style.display = 'none'
+// }
+
+// on()
+
 //generate grid
 for (let index = 0; index < width ** 2; index++) {
   //Generate each element
@@ -51,6 +68,12 @@ for (let index = 0; index < width ** 2; index++) {
 cells[donQ].classList.add('donQ')
 //make sword appear
 cells[sword].classList.add('sword')
+
+
+
+
+
+
 
 
 //DQ and sword movement L&R
@@ -76,15 +99,17 @@ document.addEventListener('keyup', (event) => {
     cells[sword].classList.remove('sword')
     sword -= 1
     cells[sword].classList.add('sword')
-    // call throwSword function
   }
 })
 
+
+
 //FUNCTIONZZZ
 
+// start game
 start.addEventListener('click', () => {
   function startGame() {
-    document.querySelector('.start').disabled = true
+    // document.querySelector('.start').disabled = true
 
     play = true
     // off()
@@ -92,14 +117,15 @@ start.addEventListener('click', () => {
     throwSword()
     moveGiants()
     dropBomb()
+    mediaQuery(mobile)
   }
   startGame()
 })
 
 function resetGame() {
   window.location.reload()
+  // off()
 }
-
 
 function throwSword() {
   //up arrow key command + reappear if disappears on top 
@@ -120,6 +146,10 @@ function throwSword() {
     }, 100)
   })
 }
+
+
+
+
 
 //if sword hits giant 
 const swordHit = setInterval(() => {
@@ -214,28 +244,16 @@ function moveGiants() {
 
     //game over scenarios 
 
-    //if giant hits DQ
-    // for (let i = 0; i <= giants.length - 1; i++) {
-    //   if (cells[donQ].classList.contains('giant', 'donQ')) {
-    //     cells[giants[i]].classList.remove('donQ')
-    //     clearInterval(giantMoveId)
-    //     clearInterval(swordHit)
-
-    //     alert('Your best was not enough: Don Quixote has been clobbered by the giants')
-    //     window.location.reload()
-    //     break
-    //   }
-    // }
-
-    //if giant hits ground
+    // if giant hits DQ
     for (let i = 0; i <= giants.length - 1; i++) {
-      if (giants[i] >= (cells.length - (width - 1))) {
-        clearInterval(giantMoveId)
-        clearInterval(bombMove)
+      if (cells[donQ].classList.contains('giant', 'donQ')) {
+        cells[giants[i]].classList.remove('donQ')
 
-        alert('Your best was not enough: Don Quixote cannot withstand hand-to-hand combat with these giants')
+        clearInterval(giantMoveId)
+        clearInterval(swordHit)
+
+        alert('Your best was not enough: Don Quixote has been clobbered by the giants')
         window.location.reload()
-        console.log('why are you not reloading')
         break
       }
     }
@@ -324,15 +342,58 @@ function dropBomb() {
 }
 
 
+// media queries
+const mobile = window.matchMedia('(max-width: 450px)')
+
+function mediaQuery(mobile) {
+  if (mobile.matches) {
+    left.addEventListener('click', () => {
+      if (!(donQ % width === 0)) {
+        cells[donQ].classList.remove('donQ')
+        donQ -= 1
+        cells[donQ].classList.add('donQ')
+    
+        cells[sword].classList.remove('sword')
+        sword -= 1
+        cells[sword].classList.add('sword')
+      }
+    })
+    
+    right.addEventListener('click', () => {
+      if (!(donQ % width === width - 1)) {
+        cells[donQ].classList.remove('donQ')
+        donQ += 1
+        cells[donQ].classList.add('donQ')
+    
+        cells[sword].classList.remove('sword')
+        sword += 1
+        cells[sword].classList.add('sword')
+      }
+    })
+    
+    shoot.addEventListener('click', () => {
+      const swordId = setInterval(() => {
+        if (sword < width) {
+          cells[sword].classList.remove('sword')
+          clearInterval(swordId)
+          sword = (donQ - width)
+          cells[sword].classList.add('sword')
+        } else if (sword > width - 1) {
+          cells[sword].classList.remove('sword')
+          //MAKE IT GO STRAIGHT
+          sword -= width
+          cells[sword].classList.add('sword')
+        }
+      }, 100)
+    })
+  }
+}
+
+mobile.addListener(mediaQuery)
 
 
 
-// //overlay
-// function on() {
-//   document.getElementById('overlay').style.display = 'block'
-// }
 
-// function off() {
-//   document.getElementById('overlay').style.display = 'none'
-// }
-// on()
+
+
+
