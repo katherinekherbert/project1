@@ -65,7 +65,6 @@ function dQySwordAppear() {
 }
 
 
-
 //DQ and sword movement L&R
 document.addEventListener('keyup', (event) => {
   const key = event.key
