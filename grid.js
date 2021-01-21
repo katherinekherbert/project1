@@ -39,16 +39,16 @@ let diffuseBomb = 25
 
 
 //SET UPPPPPPPPPPP
-//overlay
-// function on() {
-//   document.getElementById('overlay').style.display = 'block'
-// }
+// overlay
+function on() {
+  document.getElementById('overlay').style.display = 'block'
+}
 
-// function off() {
-//   document.getElementById('overlay').style.display = 'none'
-// }
+function off() {
+  document.getElementById('overlay').style.display = 'none'
+}
 
-// on()
+on()
 
 //generate grid
 for (let index = 0; index < width ** 2; index++) {
@@ -112,7 +112,7 @@ start.addEventListener('click', () => {
     // document.querySelector('.start').disabled = true
 
     play = true
-    // off()
+    off()
     createGiant()
     throwSword()
     moveGiants()
@@ -248,6 +248,8 @@ function moveGiants() {
     for (let i = 0; i <= giants.length - 1; i++) {
       if (cells[donQ].classList.contains('giant', 'donQ')) {
         cells[giants[i]].classList.remove('donQ')
+        cells[giants[i]].classList.remove('skull')
+
 
         clearInterval(giantMoveId)
         clearInterval(swordHit)
@@ -304,7 +306,7 @@ function dropBomb() {
 
       cells[bombPosition].classList.remove('bomb')
       cells[bombPosition].classList.remove('donQ')
-      cells[bombPosition].classList.add('explosion')
+      cells[bombPosition].classList.add('skull')
 
       clearInterval(bombMove)
       clearInterval(giantMoveId)
