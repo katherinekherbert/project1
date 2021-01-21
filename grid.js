@@ -1,6 +1,3 @@
-
-
-
 // Make square grid
 const grid = document.querySelector('.grid')
 
@@ -35,9 +32,6 @@ let killGiant = 50
 let diffuseBomb = 25
 // points.innerHTML = points
 
-
-
-
 //SET UPPPPPPPPPPP
 // overlay
 function on() {
@@ -47,7 +41,6 @@ function on() {
 function off() {
   document.getElementById('overlay').style.display = 'none'
 }
-
 on()
 
 //generate grid
@@ -64,15 +57,12 @@ for (let index = 0; index < width ** 2; index++) {
   cell.style.height = `${100 / width}%`
 }
 
-//make DQ appear
-cells[donQ].classList.add('donQ')
-//make sword appear
-cells[sword].classList.add('sword')
-
-
-
-
-
+function dQySwordAppear() {
+  //make DQ appear
+  cells[donQ].classList.add('donQ')
+  //make sword appear
+  cells[sword].classList.add('sword')
+}
 
 
 
@@ -81,7 +71,7 @@ document.addEventListener('keyup', (event) => {
   const key = event.key
 
   //move right
-  if (key === 'd' && !(donQ % width === width - 1)) {
+  if (key === 'd' || key === 'D' && !(donQ % width === width - 1)) {
     cells[donQ].classList.remove('donQ')
     donQ += 1
     cells[donQ].classList.add('donQ')
@@ -91,7 +81,7 @@ document.addEventListener('keyup', (event) => {
     cells[sword].classList.add('sword')
 
     //move left
-  } else if (key === 'a' && !(donQ % width === 0)) {
+  } else if (key === 'a' || key === 'A' && !(donQ % width === 0)) {
     cells[donQ].classList.remove('donQ')
     donQ -= 1
     cells[donQ].classList.add('donQ')
@@ -118,6 +108,7 @@ start.addEventListener('click', () => {
     moveGiants()
     dropBomb()
     mediaQuery(mobile)
+    dQySwordAppear()
   }
   startGame()
 })
@@ -127,17 +118,19 @@ function resetGame() {
   // off()
 }
 
+
 function throwSword() {
   //up arrow key command + reappear if disappears on top 
+
   document.addEventListener('keyup', (event) => {
     const key = event.key
     const swordId = setInterval(() => {
-      if (key === 'w' && sword < width) {
+      if ((key === 'w' || key === 'W') && sword < width) {
         cells[sword].classList.remove('sword')
         clearInterval(swordId)
         sword = (donQ - width)
         cells[sword].classList.add('sword')
-      } else if (key === 'w' && sword > width - 1) {
+      } else if ((key === 'w' || key === 'W') && sword > width - 1) {
         cells[sword].classList.remove('sword')
         //MAKE IT GO STRAIGHT
         sword -= width
@@ -250,11 +243,11 @@ function moveGiants() {
         cells[giants[i]].classList.remove('donQ')
         cells[giants[i]].classList.remove('skull')
 
-
         clearInterval(giantMoveId)
         clearInterval(swordHit)
 
         alert('Your best was not enough: Don Quixote has been clobbered by the giants')
+
         window.location.reload()
         break
       }
@@ -268,9 +261,8 @@ function moveGiants() {
       clearInterval(giantMoveId)
 
       alert('You did it! You helped Don Quixote defeat the giants. Thank you for your service')
-      window.location.reload()
 
-      console.log('why tf are you not reloading')
+      window.location.reload()
 
       //gameOver()
 
@@ -312,9 +304,8 @@ function dropBomb() {
       clearInterval(giantMoveId)
 
       alert('Don Quixote has been attacked by a vicious sheep! You lose')
-      window.location.reload()
 
-      //gameOver()
+      window.location.reload()
 
 
       //if bomb hits ground
@@ -344,8 +335,8 @@ function dropBomb() {
 }
 
 
-// media queries
-const mobile = window.matchMedia('(max-width: 450px)')
+// media queries qqq
+const mobile = window.matchMedia('(max-width: 550px)')
 
 function mediaQuery(mobile) {
   if (mobile.matches) {
@@ -354,25 +345,25 @@ function mediaQuery(mobile) {
         cells[donQ].classList.remove('donQ')
         donQ -= 1
         cells[donQ].classList.add('donQ')
-    
+
         cells[sword].classList.remove('sword')
         sword -= 1
         cells[sword].classList.add('sword')
       }
     })
-    
+
     right.addEventListener('click', () => {
       if (!(donQ % width === width - 1)) {
         cells[donQ].classList.remove('donQ')
         donQ += 1
         cells[donQ].classList.add('donQ')
-    
+
         cells[sword].classList.remove('sword')
         sword += 1
         cells[sword].classList.add('sword')
       }
     })
-    
+
     shoot.addEventListener('click', () => {
       const swordId = setInterval(() => {
         if (sword < width) {
@@ -394,6 +385,38 @@ function mediaQuery(mobile) {
 mobile.addListener(mediaQuery)
 
 
+
+// leaderboard
+// let playerScores = []
+// const scoreList = document.querySelector('ol')
+
+// if (localStorage) {
+//   playerScores = JSON.parse(localStorage.getItem['leaderboard']) || [
+//     { name: 'Emily', finalScore: 300 }
+//   ]
+// }
+
+// function orderAndDisplayScore() {
+//   const array = playerScores
+//     .sort((playerA, playerB) => playerB.finalScore - playerA.finalScore)
+//     .slice(0, 5)
+//     .map(player => {
+//       return `<li>
+//     ${player.name}: ${player.finalScore}
+//     </li>`
+//     })
+//   scoreList.innerHTML = array.join('')
+// }
+// orderAndDisplayScore()
+
+// const newName = prompt('Please enter your name: ')
+// const newScore = points 
+// const player = { name: newName, finalScore: newScore }
+// playerScores.push(player)
+// if (localStorage) {
+//   localStorage.setItem('leaderboard', JSON.stringify(playerScores))
+//   orderAndDisplayScore()
+// }
 
 
 

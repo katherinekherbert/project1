@@ -5,14 +5,18 @@
 body {
   background-color: #D2B48C;
   /* background-image: url('../project1/images/background.png') */
+ 
 }
 
 .header {
   /* background-color: #A2C7E5; */
+  display: flex;
+  justify-content: center;
   font-family: 'Cormorant', serif;
   text-align: center;
   padding: 15px 0px 5px 0px;
   font-size: 250%;
+  /* border: 5px solid red; */
 }
 
 /* overlay */
@@ -48,6 +52,7 @@ body {
   align-content: flex-start;
   /* width: 85%; */
   flex: 1;
+  /* border: 5px solid fuchsia; */
 }
 
 /* left side */
@@ -70,7 +75,6 @@ body {
   width: 600px;
   height: 600px;
   flex-wrap: wrap;
-
 }
 
 .cell {
@@ -96,8 +100,8 @@ body {
   flex-direction: column;
   flex: 1;
   align-items: center;
-
-
+  /* margin: 10px 25px 20px 15px; */
+  /* width: 500px; */
 }
 
 /* how to play box */
@@ -106,7 +110,6 @@ body {
   margin: 0px;
   display: flex;
   flex-direction: column;
-  /* border: 5px solid blue; */
 
 }
 
@@ -138,8 +141,8 @@ justify-content: space-around;
   display: flex;
   flex-direction: row;
   text-align: center;
-  /* border: 5px solid yellow; */
   padding: 0px;
+  /* border: 5px solid brown; */
 
   /* background-color: purple; */
 }
@@ -214,6 +217,7 @@ justify-content: space-around;
   display: flex;
   flex-direction: row;
   margin: 10%;
+  /* border: 5px solid yellow; */
 }
 
 .start {
@@ -243,6 +247,7 @@ justify-content: space-around;
   display: flex;
   flex-direction: row;
   /* flex: 1; */
+  /* border: 5px solid pink; */
 }
 
 
@@ -254,6 +259,8 @@ justify-content: space-around;
   flex: 2;
   text-align: center;
   margin: 2%;
+  /* border: 5px solid brown; */
+
 }
 
 #extra-info-title {
@@ -316,6 +323,8 @@ justify-content: space-around;
   margin: 5%;
   flex: 1;
   padding: 0px 2px 15px 2px;
+  /* border: 5px solid black; */
+
 }
 
 /* game icons */
@@ -360,11 +369,10 @@ justify-content: space-around;
 
 
 /* MEDIA QUERIES qqq*/
-@media screen and (max-width: 450px) {
-body {
-  align-content: center;
-}
-  .header {
+@media screen and (max-width: 550px) {
+
+
+.header {
   font-size: 100%;
 }
 
@@ -379,16 +387,22 @@ body {
 
 .game-controls {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
+  justify-content: center;
   /* margin: 2%; */
   /* border: 5px solid red; */
   text-align: center;
   margin: 2%;
+  /* border: 5px solid pink; */
+
 }
 
 #control-buttons {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  /* border: 5px solid purple; */
+
 }
 
 .move-left {
@@ -430,11 +444,11 @@ body {
 #rules {
   /* border: 5px solid orange; */
   padding: 0%;
-  margin: 0%;
+  margin: auto;
 }
 
 /* #rules-title {
-  border: 5px solid green;
+  border: 5px solid black;
 } */
 
 .rules-copy {
@@ -442,14 +456,14 @@ body {
   padding: 0%;
 }
 
-/* #gc-comp-rules-copy1 {
+#gc-comp-rules-copy1 {
   display: none;
 }
 
 #gc-mobile-rules-copy1 {
   background-color: lightgreen;
   display: flex;
-} */
+}
 
 .extra-info {
   display: flex;
@@ -458,7 +472,7 @@ body {
 }
 
 .info-boxes {
-  border: 5px solid red;
+  /* border: 5px solid red; */
 }
 
 /* .make-boxes {
@@ -466,13 +480,13 @@ body {
 } */
 
 .read-buy {
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
   flex: 1;
   align-items: center;
 }
 
 .bne-guide {
-  border: 5px solid purple;
+  /* border: 5px solid purple; */
   flex: 1;
 
 }
