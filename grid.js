@@ -17,7 +17,8 @@ const cells = []
 let play = false
 let donQ = 217
 let sword = 202
-const giants = [0, 1, 2, 3, 16, 17, 18, 19]
+const giants = [0, 1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 21]
+
 let giantDirection = 'right'
 let giantMoveId
 let bombMove
@@ -57,7 +58,7 @@ document.addEventListener('keyup', (event) => {
   const key = event.key
 
   //move right
-  if (key === 'ArrowRight' && !(donQ % width === width - 1)) {
+  if (key === 'd' && !(donQ % width === width - 1)) {
     cells[donQ].classList.remove('donQ')
     donQ += 1
     cells[donQ].classList.add('donQ')
@@ -67,7 +68,7 @@ document.addEventListener('keyup', (event) => {
     cells[sword].classList.add('sword')
 
     //move left
-  } else if (key === 'ArrowLeft' && !(donQ % width === 0)) {
+  } else if (key === 'a' && !(donQ % width === 0)) {
     cells[donQ].classList.remove('donQ')
     donQ -= 1
     cells[donQ].classList.add('donQ')
@@ -105,12 +106,12 @@ function throwSword() {
   document.addEventListener('keyup', (event) => {
     const key = event.key
     const swordId = setInterval(() => {
-      if (key === 'ArrowUp' && sword < width) {
+      if (key === 'w' && sword < width) {
         cells[sword].classList.remove('sword')
         clearInterval(swordId)
         sword = (donQ - width)
         cells[sword].classList.add('sword')
-      } else if (key === 'ArrowUp' && sword > width - 1) {
+      } else if (key === 'w' && sword > width - 1) {
         cells[sword].classList.remove('sword')
         //MAKE IT GO STRAIGHT
         sword -= width

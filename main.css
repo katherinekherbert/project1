@@ -16,33 +16,25 @@ header {
 }
 
 h1 {
-  background-color: #A2C7E5;
+  /* background-color: #A2C7E5; */
   font-family: 'Cormorant', serif;
   text-align: center;
   padding: 15px;
 }
 
 
-
-.flex-content {
-  display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
-  flex-direction: row;
+/* content */
+.main-content {
   font-family: 'Cormorant', serif;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  /* width: 85%; */
+  flex: 1;
 }
 
 /* left side */
-.game-board {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0px 10px 0px 10px;
-}
-
 .grid {
-  /* background-image: url('../project1/images/campo\ de\ criptana.png'); */
   background-size: cover;
   background-image: url('../project1/images/criptana.png');
   display: flex;
@@ -51,6 +43,7 @@ h1 {
   width: 600px;
   height: 600px;
   flex-wrap: wrap;
+
 }
 
 .cell {
@@ -58,18 +51,132 @@ h1 {
 }
 
 .score {
-  /* justify-content: center;
-  align-items: center; */
+
   background-color: #c1bddb;
-  width: 100%;
+  width: 25%;
   text-align: center;
 }
+
+.game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px 10px 0px 10px;
+  flex: 1;
+
+}
+
+/* RIGHT SIDE STUFF */
+
+
+.how-button {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  /* border: 5px solid blue; */
+
+
+}
+
+/* how to play box */
+#rules {
+  padding: 0% 2% 0% 2%;
+  margin: 0% 5% 5% 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+#box-title {
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  background-color: lightblue;
+}
+
+#rules-title1 {
+  font-style: italic;
+  background-color: green;
+  text-align: center;
+  width: 100%
+}
+
+#rules-title2 {
+  font-style: italic;
+  background-color: yellow;
+  text-align: center;
+  width: 100%
+}
+
+.rules-copy {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  /* background-color: purple; */
+}
+
+#rules-copy1 {
+  background-color: lightgreen;
+}
+
+#rules-copy2 {
+  background-color: lightyellow;
+}
+
+.win-lose {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 2%;
+
+}
+
+#win-if {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* border: 5px solid orange; */
+}
+
+#ends-if {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* border: 5px solid yellow; */
+}
+
+.controls-points {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 2%;
+  /* border: 5px solid rgb(153, 146, 146); */
+
+}
+
+#game-controls {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  /* border: 5px solid purple; */
+}
+
+#points-for {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  /* border: 5px solid black; */
+}
+
+
 
 /* button */
 .button {
   display: flex;
   flex-direction: row;
-  margin: 10px;
 }
 
 .start {
@@ -84,7 +191,7 @@ h1 {
 
 .restart {
   width: 100%;
-  background-color: #FFB499;
+  background-color: #ffb347;
   padding: 14px 28px;
   font-size: 20px;
   cursor: pointer;
@@ -92,42 +199,87 @@ h1 {
   font-family: 'Cormorant', serif;
 }
 
-/* RIGHT SIDE STUFF */
-.content {
+
+
+/* extra info */
+.extra-info {
+  display: flex;
+  flex-direction: row;
+  /* flex: 1; */
+}
+
+
+/* related links  */
+.info-boxes {
+  font-family: 'Cormorant', serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 0px 10px 0px 10px;
+  flex: 2;
+  text-align: center;
+  margin: 2%;
 }
 
-/* description box */
-#goal {
-  background-color: #e5c1bd;
-  padding: 2%;
-  margin: 5%;
-}
-
-
-
-/* how to play box */
-#how-to-play {
+#extra-title {
   text-align: center;
   font-size: 20px;
+  width: 100%;
+  background-color: lightblue;
 }
 
-#rules {
-  background-color: #9DBDAE;
-  padding: 2%;
-  margin: 5%;
+.make-boxes{
+  display: flex;
+  flex-direction: row;
 }
+
+.read-buy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 2%;
+}
+
+#read {
+  flex: 1;
+  background-color: pink;
+  margin: 1%;
+}
+
+#buy {
+  flex: 1;
+  background-color: blueviolet;
+  margin: 1%;
+
+}
+
+.bne-guide {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 2%;
+}
+
+#bne {
+  flex: 1;
+  background-color: blueviolet;
+  margin: 1%;
+}
+
+#guide {
+  flex: 1;
+  background-color: pink;
+  margin: 1%;
+
+}
+
+
 
 /* thank you credits */
-footer {
+#credits {
   font-family: 'Cormorant', serif;
   background-color: #A2C7E5;
-  margin: 5%;
   text-align: center;
-  padding: 5px 0px 30px 0px;
+  margin: 5%;
+  flex: 1;
 }
 
 /* game icons */
@@ -167,6 +319,13 @@ footer {
 }
 
 
+/* description box */
+/* #goal {
+  background-color: #e5c1bd;
+  padding: 2%;
+  margin: 0% 5% 5% 5%;
+  flex: 1;
+} */
 
 /* #overlay {
   position: fixed; 
