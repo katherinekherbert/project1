@@ -42,6 +42,18 @@ body {
   -ms-transform: translate(-50%,-50%);
 }
 
+#lose-overlay {
+  font-family: 'Cormorant', serif;
+  background-color: rgba(129, 108, 91, 0.8);
+  position: relative; 
+  display: none;
+  width: 600px; 
+  height: 600px; 
+  z-index: 2; 
+  cursor: pointer; 
+  text-align: center;
+}
+
 /* content */
 .main-content {
   font-family: 'Cormorant', serif;
@@ -81,6 +93,8 @@ body {
 /* score */
 .score {
   background-color: #B99C63;
+  border: 2px solid #685837;
+
   width: 45%;
   text-align: center;
 }
@@ -109,6 +123,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #895125;
+  border: 2px solid #442812;
+  width: 75%;
 }
 
 #rules-title {
@@ -123,7 +139,6 @@ body {
 
 #rules-title1 {
   font-style: italic;
-  background-color: #a26d41;
   text-align: center;
   width: 100%
 }
@@ -143,50 +158,61 @@ body {
   /* border: 5px solid brown; */
 }
 
-#rules-copy1 {
-  background-color: #B28053;
-}
-
-#gc-mobile-rules-copy1 {
+#gc-mobile-rules-copy2 {
   display: none;
 }
 
-#rules-copy2 {
-  background-color: #B28053;
-}
+
 
 .win-lose {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 2%;
+  margin: 1%;
 }
 
 #win-if {
   display: flex;
   flex-direction: column;
   flex: 1;
+  background-color: #B28053;
+  border: 2px solid #5e432c;
+  color: white;
+  margin: 1%;
   /* border: 5px solid orange; */
 }
 
 #ends-if {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 2;
   /* border: 5px solid yellow; */
+  background-color: #a26d41;
+  border: 2px solid #4b321e;
+  color: white;
+
+  margin: 1%;
+
 }
 
 .controls-points {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 2%;
+  margin: 1%;
+
 }
 
 #game-controls-copy {
   display: flex;
   flex-direction: column;
   flex: 1;
+  background-color: #B28053;
+  border: 2px solid #5e432c;
+  color: white;
+
+  margin: 1%;
+
   /* border: 5px solid purple; */
 }
 
@@ -195,6 +221,11 @@ body {
   flex-direction: column;
   flex: 1;
   /* border: 5px solid black; */
+  background-color: #a26d41;
+  border: 2px solid #4b321e;
+  color: white;
+
+  margin: 1%;
 }
 
 /* button */
@@ -215,7 +246,7 @@ body {
   font-family: 'Cormorant', serif;
 }
 
-.restart {
+/* .restart {
   width: 100%;
   background-color: #D57500;
   padding: 14px 28px;
@@ -223,7 +254,7 @@ body {
   cursor: pointer;
   text-align: center;
   font-family: 'Cormorant', serif;
-}
+} */
 
 /* cervantes info */
 .cervantes {
@@ -237,9 +268,14 @@ body {
   text-align: center;
   flex: 1;
   background-color: #4E6172;
+  border: 2px solid #252e36;
   align-content: center;
   margin: 2%;
 
+}
+
+#portada-copy {
+  color: white;
 }
 
 .cervantes-info {
@@ -250,25 +286,35 @@ body {
   margin: 2%;
 }
 
+.cervantes-title {
+  font-style: italic;
+
+}
+
 #who-is {
   /* border: 5px solid orange; */
   flex: 1;
   background-color: #A3ADB8;
+  border: 2px solid #4a4f53;
   margin: 2%;
+  padding: 2%;
 }
 
 #history {
   /* border: 5px solid pink; */
   flex: 1;
   background-color: #83929f;
+  border: 2px solid #383e44;
   margin: 2%; 
+  padding: 2%;
+
 }
 
 /* links + credits */
 .extra-info {
   display: flex;
   flex-direction: row;
-  /* flex: 1; */
+  flex: 1;
   /* border: 5px solid pink; */
 }
 
@@ -279,8 +325,9 @@ body {
   flex-direction: column;
   flex: 2;
   text-align: center;
-  margin: 2%;
+  margin: 1%;
   background-color: #493829;
+  border: 2px solid #1b150f;
   /* border: 5px solid brown; */
 }
 
@@ -300,39 +347,47 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 2%;
+  margin: 1%;
 }
 
 #read {
   flex: 1;
   background-color: #816c5b;
+  border: 2px solid #3a3029;
   margin: 1%;
+  color: white;
+
 }
 
 #buy {
   flex: 1;
   background-color: #a9a18c;
+  border: 2px solid #4e4a41;
   margin: 1%;
+
 }
 
 .bne-guide {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 2%;
+  margin: 1%;
 }
 
 #bne {
   flex: 1;
   background-color: #a9a18c;
-
+  border: 2px solid #4e4a41;
   margin: 1%;
+
 }
 
 #guide {
   flex: 1;
   margin: 1%;
   background-color: #816c5b;
+  border: 2px solid #3a3029;
+  color: white;
 
 }
 
@@ -340,10 +395,11 @@ body {
 #credits {
   font-family: 'Cormorant', serif;
   background-color: #B99C63;
+  border: 2px solid #685837;
   text-align: center;
-  margin: 5%;
+  margin: 2%;
+  padding: 1%;
   flex: 1;
-  padding: 0px 2px 15px 2px;
   /* border: 5px solid black; */
 
 }
@@ -394,7 +450,7 @@ body {
 
 
 .header {
-  font-size: 100%;
+  font-size: 150%;
 }
 
 .main-content {
@@ -476,8 +532,10 @@ body {
   display: none;
 }
 
-#gc-mobile-rules-copy1 {
-  background-color: #A3ADB8;
+#gc-mobile-rules-copy2 {
+  background-color: #B28053;
+  color: white;
+
   display: flex;
 }
 
@@ -502,6 +560,7 @@ body {
   width: 50%;
 }
 
+
 .cervantes-info {
   display: flex;
   flex-direction: column;
@@ -517,18 +576,19 @@ body {
 #history {
   /* border: 5px solid pink; */
   flex: 1;
+
 }
 
 /* extra info */
 .extra-info {
   display: flex;
   flex-direction: column;
-  
+
 }
 
-.info-boxes {
-  /* border: 5px solid red; */
-}
+/* .info-boxes {
+  border: 5px solid red;
+} */
 
 /* .make-boxes {
   border: 5px solid orange;
@@ -538,6 +598,7 @@ body {
   /* border: 5px solid blue; */
   flex: 1;
   align-items: center;
+
 }
 
 .bne-guide {
@@ -549,6 +610,7 @@ body {
 #read {
   margin: 2%;
   flex: 1;
+  
 }
 
 #buy {
@@ -579,6 +641,16 @@ body {
 
 #goal {
   font-size: 13px;
+}
+
+#lose-overlay {
+  display: none;
+  /* position: absolute;  */
+  /* margin: 7% 100% 12% 4%; */
+  /* margin-top: 5%;
+  margin-left: 5%; */
+  width: 375px; 
+  height: 375px; 
 }
 
 .start {

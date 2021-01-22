@@ -4,7 +4,6 @@ const grid = document.querySelector('.grid')
 //play button
 const start = document.querySelector('.start')
 //restart button
-const restart = document.querySelector('.restart')
 
 // Specify the width of the grid + placement of donQ (aka the shooter)
 const width = 15
@@ -34,14 +33,18 @@ let diffuseBomb = 25
 
 //SET UPPPPPPPPPPP
 // overlay
-function on() {
+// initial overlay
+function onInitialOverlay() {
   document.getElementById('overlay').style.display = 'block'
 }
 
-function off() {
+function offInitialOverlay() {
   document.getElementById('overlay').style.display = 'none'
 }
-on()
+onInitialOverlay()
+
+
+
 
 //generate grid
 for (let index = 0; index < width ** 2; index++) {
@@ -101,7 +104,7 @@ start.addEventListener('click', () => {
     // document.querySelector('.start').disabled = true
 
     play = true
-    off()
+    offInitialOverlay()
     createGiant()
     throwSword()
     moveGiants()
@@ -245,7 +248,7 @@ function moveGiants() {
         clearInterval(giantMoveId)
         clearInterval(swordHit)
 
-        alert('"Truly I was born to be an example of misfortune and a target at which the arrows of adversary are aimed" -Don Quixote. You lose! Try again')
+        alert('"Truly, I was born to be an example of misfortune and a target at which the arrows of adversary are aimed" -Don Quixote. You lose! Try again')
 
         window.location.reload()
         break
